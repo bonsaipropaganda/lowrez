@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://t4aqevfirnxx"]
+[gd_scene load_steps=10 format=3 uid="uid://t4aqevfirnxx"]
 
 [ext_resource type="Script" path="res://code/Player.gd" id="1_ehg8g"]
 [ext_resource type="PackedScene" uid="uid://d2bm7weapjhnx" path="res://art/floor.glb" id="1_o6v6p"]
 [ext_resource type="PackedScene" uid="uid://cfnhnb5jlm1hu" path="res://scenes/walls.tscn" id="3_irwcj"]
+[ext_resource type="PackedScene" uid="uid://cxovoji8xom07" path="res://scenes/complete_ceiling.tscn" id="4_t1wvk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rqify"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -56,3 +57,5 @@ shape = SubResource("ConvexPolygonShape3D_epqpa")
 transform = Transform3D(1, 0, 0, 0, 0.971421, -0.237364, 0, 0.237364, 0.971421, 0, 1.39849, 0)
 
 [node name="Walls" parent="." instance=ExtResource("3_irwcj")]
+
+[node name="CompleteCeiling" parent="." instance=ExtResource("4_t1wvk")]

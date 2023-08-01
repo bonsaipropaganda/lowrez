@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b5ebwe0vxvxsp" path="res://scenes/wall.tscn" id="1_2qs70"]
 
-[node name="Ceiling" type="Node3D"]
+[node name="CeilingPiece" type="Node3D"]
 
 [node name="BigWall3" parent="." instance=ExtResource("1_2qs70")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 3, 1)
