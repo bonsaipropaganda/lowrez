@@ -1,4 +1,2 @@
-res://world.tscn
-res://CharacterBody3D.gd
-res://Player.gd
+res://scenes/block.tscn
 res://scenes/world.tscn
