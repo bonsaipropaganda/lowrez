@@ -1,1 +1,10 @@
+res://scenes/walls.tscn
 res://scenes/world.tscn
+res://scenes/block.tscn
+res://scenes/wall.tscn
+res://scenes/ceiling.tscn
+res://scenes/room.tscn
+res://scenes/health_component.tscn
+res://scenes/health_component.gd
+res://scenes/player.tscn
+res://code/Player.gd
