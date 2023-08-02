@@ -6,6 +6,10 @@ signal take_damage
 @export var starting_health: int
 var current_health:
 	set(new_value):
+		# if new value is less than the current health take damage signal
+		if current_health:
+			if new_value < current_health:
+				take_damage.emit()
 		# sets the value like normal
 		current_health = new_value
 		# emits a signal if entity runs out of health

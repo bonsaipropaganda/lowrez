@@ -42,5 +42,4 @@ func attack():
 
 
 func _on_health_component_take_damage() -> void:
-	print("damage")
 	$AnimationPlayer.play("hit")
