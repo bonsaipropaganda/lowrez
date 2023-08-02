@@ -1,11 +1,14 @@
 extends Node3D
 
 signal die
+signal take_damage
 
 @export var starting_health: int
 var current_health:
 	set(new_value):
+		# sets the value like normal
 		current_health = new_value
+		# emits a signal if entity runs out of health
 		if current_health == 0:
 			die.emit()
 

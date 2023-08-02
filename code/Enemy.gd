@@ -7,6 +7,7 @@ var gravity = 9.8
 
 @onready var health = $HealthComponent
 @onready var target_area = $TargetArea
+@onready var animation_player = $AnimationPlayer
 
 
 func _physics_process(delta):
@@ -25,6 +26,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_health_component_die() -> void:
+	animation_player.play("die")
+	# finishs animaiton before getting rid of the enemy
+	await get_tree().create_timer(1).timeout
 	queue_free()
 
 func attack():
@@ -35,3 +39,8 @@ func attack():
 	for body in bodies:
 		if body is Player:
 			body.health.current_health -= 1
+
+
+func _on_health_component_take_damage() -> void:
+	print("damage")
+	$AnimationPlayer.play("hit")
