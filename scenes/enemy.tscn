@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkcvw"]
 radius = 0.598906
-height = 2.5298
+height = 2.00482
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nlixr"]
 size = Vector3(1, 1.7177, 1)
@@ -48,14 +48,14 @@ _data = {
 "hit": SubResource("Animation_uykxp")
 }
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_8vhs5")
 
 [node name="Mesh" parent="." instance=ExtResource("1_h6jai")]
-transform = Transform3D(-15, 0, -2.26494e-06, 0, 15, 0, 2.26494e-06, 0, -15, 0, 0, 0)
+transform = Transform3D(-10, 0, -1.50996e-06, 0, 10, 0, 1.50996e-06, 0, -10, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15598, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.859469, 0)
 shape = SubResource("CapsuleShape3D_bkcvw")
 
 [node name="TargetArea" type="Area3D" parent="."]
@@ -73,6 +73,10 @@ libraries = {
 "": SubResource("AnimationLibrary_0672o")
 }
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.0
+
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

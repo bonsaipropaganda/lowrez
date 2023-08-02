@@ -1,28 +1,28 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED = 3
 var gravity = 9.8
 
+# signals
+signal attack_player
 
+# node refs
 @onready var health = $HealthComponent
 @onready var target_area = $TargetArea
 @onready var animation_player = $AnimationPlayer
-
+@onready var nav_agent = $NavigationAgent3D
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
-#	var direction
-#	if direction:
-#		velocity.x = direction.x * SPEED
-#		velocity.z = direction.z * SPEED
-#	else:
-#		velocity.x = move_toward(velocity.x, 0, SPEED)
-#		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
+	var current_location = global_transform.origin
+	var next_location = nav_agent.get_next_path_position()
+	var new_velocity = (next_location - current_location).normalized() * SPEED
+	
+	velocity = velocity.move_toward(new_velocity, .25)
 	move_and_slide()
 
 func _on_health_component_die() -> void:
@@ -40,6 +40,13 @@ func attack():
 		if body is Player:
 			body.health.current_health -= 1
 
+func update_target_location(target_location):
+	nav_agent.set_target_position(target_location)
 
 func _on_health_component_take_damage() -> void:
 	$AnimationPlayer.play("hit")
+
+
+func _on_navigation_agent_3d_target_reached() -> void:
+	print("enemy hit the player")
+	attack_player.emit()
