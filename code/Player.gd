@@ -12,6 +12,7 @@ var gravity: float = 9.8
 @onready var head = $Head
 @onready var camera = $Head/Camera
 @onready var health = $HealthComponent
+@onready var target_area = $Head/TargetArea
 
 # variables
 var starting_pos
@@ -36,9 +37,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	# Attack the thing in the Target Area!!
+	if Input.is_action_just_pressed("ui_accept"):
+		attack()
 
 
 	# Get the input direction and handle the movement/deceleration.
@@ -60,3 +61,11 @@ func _on_health_component_die() -> void:
 func reset_player():
 	health.current_health = health.starting_health
 	position = starting_pos
+
+func attack():
+	# first get anything in the target area
+	var bodies = target_area.get_overlapping_bodies()
+	# checks if it has health component and 
+	#if so subtracts health from that things current health
+	for body in bodies:
+		print(body.get_children())
