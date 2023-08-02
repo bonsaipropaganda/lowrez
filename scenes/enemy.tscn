@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqecp8vm56tma"]
+
+[ext_resource type="Script" path="res://code/Enemy.gd" id="1_8vhs5"]
+[ext_resource type="PackedScene" uid="uid://edmjlwf52ax3" path="res://art/enemy.glb" id="1_h6jai"]
+[ext_resource type="PackedScene" uid="uid://smnyhk4odf6a" path="res://scenes/health_component.tscn" id="3_posg8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkcvw"]
+radius = 0.598906
+height = 2.5298
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlixr"]
+size = Vector3(1, 1.7177, 1)
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_8vhs5")
+
+[node name="Mesh" parent="." instance=ExtResource("1_h6jai")]
+transform = Transform3D(-15, 0, -2.26494e-06, 0, 15, 0, 2.26494e-06, 0, -15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15598, 0)
+shape = SubResource("CapsuleShape3D_bkcvw")
+
+[node name="TargetArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TargetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.676116, 0)
+shape = SubResource("BoxShape3D_nlixr")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_posg8")]
+starting_health = 1

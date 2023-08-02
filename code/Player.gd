@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+class_name Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -65,7 +66,7 @@ func reset_player():
 func attack():
 	# first get anything in the target area
 	var bodies = target_area.get_overlapping_bodies()
-	# checks if it has health component and 
+	# checks if it has health component and
 	#if so subtracts health from that things current health
 	for body in bodies:
 		print(body.get_children())
