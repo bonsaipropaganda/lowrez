@@ -69,4 +69,7 @@ func attack():
 	# checks if it has health component and
 	#if so subtracts health from that things current health
 	for body in bodies:
-		print(body.get_children())
+		for component in body.get_children():
+			if component.name == "HealthComponent":
+				print(component.current_health)
+				component.current_health -= 1

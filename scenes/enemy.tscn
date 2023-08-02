@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://code/Enemy.gd" id="1_8vhs5"]
 [ext_resource type="PackedScene" uid="uid://edmjlwf52ax3" path="res://art/enemy.glb" id="1_h6jai"]
-[ext_resource type="PackedScene" uid="uid://smnyhk4odf6a" path="res://scenes/health_component.tscn" id="3_posg8"]
+[ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_posg8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkcvw"]
 radius = 0.598906
@@ -30,3 +30,5 @@ shape = SubResource("BoxShape3D_nlixr")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_posg8")]
 starting_health = 1
+
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
