@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqecp8vm56tma"]
+[gd_scene load_steps=11 format=3 uid="uid://dqecp8vm56tma"]
 
 [ext_resource type="Script" path="res://code/Enemy.gd" id="1_8vhs5"]
-[ext_resource type="PackedScene" uid="uid://edmjlwf52ax3" path="res://art/enemy.glb" id="1_h6jai"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_posg8"]
+[ext_resource type="PackedScene" uid="uid://c3rrobgj5yabx" path="res://art/character-orc.glb" id="4_jbwpg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkcvw"]
 radius = 0.598906
@@ -42,17 +42,22 @@ tracks/0/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_eleeo"]
+resource_name = "run"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0672o"]
 _data = {
 "die": SubResource("Animation_rhr5b"),
-"hit": SubResource("Animation_uykxp")
+"hit": SubResource("Animation_uykxp"),
+"run": SubResource("Animation_eleeo")
 }
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4f8cv"]
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_8vhs5")
 
-[node name="Mesh" parent="." instance=ExtResource("1_h6jai")]
-transform = Transform3D(-10, 0, -1.50996e-06, 0, 10, 0, 1.50996e-06, 0, -10, 0, 0, 0)
+[node name="character-orc" parent="." instance=ExtResource("4_jbwpg")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.859469, 0)
@@ -75,8 +80,15 @@ libraries = {
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 2.0
+path_height_offset = 0.15
+avoidance_enabled = true
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_4f8cv")
+anim_player = NodePath("../AnimationPlayer")
 
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

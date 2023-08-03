@@ -12,6 +12,7 @@ signal attack_player
 @onready var target_area = $TargetArea
 @onready var animation_player = $AnimationPlayer
 @onready var nav_agent = $NavigationAgent3D
+@onready var player = $"../Player"
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -22,8 +23,8 @@ func _physics_process(delta):
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 	
-	velocity = velocity.move_toward(new_velocity, .25)
-	move_and_slide()
+	look_at(Vector3(player.global_position.x,global_position.y,player.global_position.z),Vector3.UP)
+	nav_agent.set_velocity(new_velocity)
 
 func _on_health_component_die() -> void:
 	animation_player.play("die")
@@ -50,3 +51,8 @@ func _on_health_component_take_damage() -> void:
 func _on_navigation_agent_3d_target_reached() -> void:
 	print("enemy hit the player")
 	attack_player.emit()
+
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity = velocity.move_toward(safe_velocity, .25)
+	move_and_slide()
