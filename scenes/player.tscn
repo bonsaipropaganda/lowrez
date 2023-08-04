@@ -12,6 +12,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 size = Vector3(1, 1.7177, 1)
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465567, 0)
 script = ExtResource("1_0l28j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -49,7 +49,6 @@ func _on_health_component_take_damage() -> void:
 
 
 func _on_navigation_agent_3d_target_reached() -> void:
-	print("enemy hit the player")
 	attack_player.emit()
 
 
