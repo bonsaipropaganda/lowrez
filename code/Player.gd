@@ -39,9 +39,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 
 	# Attack the thing in the Target Area!!
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("left_mb"):
 		attack()
-
+	
+	# Handle Jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

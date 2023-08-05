@@ -52,6 +52,7 @@ func attack():
 	#if so subtracts health from that things current health
 	for body in bodies:
 		if body is Player:
+			print("hit player")
 			body.health.current_health -= 1
 
 func update_target_location(target_location):
@@ -70,3 +71,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 
 func target_in_range():
 	return global_position.distance_to(player.global_position) < attack_range
+
+# this signal triggers when the orc's attack animation is at it's hit point
+func _on_characterorc_check_target_area() -> void:
+	attack()

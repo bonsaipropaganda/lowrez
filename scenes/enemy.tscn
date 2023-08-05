@@ -82,6 +82,7 @@ path_height_offset = 0.15
 avoidance_enabled = true
 max_neighbors = 3
 
+[connection signal="check_target_area" from="character-orc" to="." method="_on_characterorc_check_target_area"]
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
