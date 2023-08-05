@@ -123,12 +123,10 @@ func expand_plane():
 	var pos = Vector2()
 	var end = Vector2()
 	for r in rooms:
-		print(r.position, " ", r.end)
 		pos.x = min(pos.x, r.position.x)
 		pos.y = min(pos.y, r.position.y)
 		end.x = max(end.x, r.end.x)
 		end.y = max(end.y, r.end.y)
-	print(pos, " ", end)
 	var size = Vector2(
 		2*max(abs(pos.x), abs(end.x)) + 10,
 		2*max(abs(pos.y), abs(end.y)) + 10

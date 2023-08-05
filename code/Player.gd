@@ -20,12 +20,6 @@ var starting_pos
 
 func _ready() -> void:
 	starting_pos = position
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _input(event: InputEvent) -> void:
-	# lets the mouse go
-	if Input.is_action_just_pressed("ui_end"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -41,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	# Attack the thing in the Target Area!!
 	if Input.is_action_just_pressed("left_mb"):
 		attack()
-	
+
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY

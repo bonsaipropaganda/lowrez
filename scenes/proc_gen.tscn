@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk2wmmhukai50"]
+[gd_scene load_steps=10 format=3 uid="uid://dk2wmmhukai50"]
 
 [ext_resource type="Script" path="res://code/proc_gen.gd" id="1_4w1in"]
 [ext_resource type="PackedScene" uid="uid://djpt27ldofduc" path="res://scenes/player.tscn" id="2_vlj3o"]
+[ext_resource type="PackedScene" uid="uid://pirxgisooq5v" path="res://scenes/pause_menu.tscn" id="3_58eq7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_isumu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -49,5 +50,7 @@ shape = SubResource("BoxShape3D_6w35c")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
 mesh = SubResource("PlaneMesh_u5fbl")
 skeleton = NodePath("../../..")
+
+[node name="Main" parent="." instance=ExtResource("3_58eq7")]
 
 [connection signal="bake_finished" from="NavigationRegion3D" to="." method="_on_navigation_region_3d_bake_finished"]
