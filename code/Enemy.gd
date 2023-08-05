@@ -9,7 +9,7 @@ signal attack_player
 
 # determines whether the enemy will follow the player
 var should_follow = true
-var attack_range = 2.5
+var attack_range = 1.8
 
 # node refs
 @onready var health = $HealthComponent
@@ -36,8 +36,8 @@ func _physics_process(delta):
 		orc_mesh.attack = true
 		orc_mesh.run = false
 	else: 
-		orc_mesh.attack = false
 		orc_mesh.run = true
+		orc_mesh.attack = false
 
 func _on_health_component_die() -> void:
 	animation_player.play("die")
@@ -69,4 +69,4 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	move_and_slide()
 
 func target_in_range():
-	return global_position.direction_to(player.global_position) < attack_range
+	return global_position.distance_to(player.global_position) < attack_range
