@@ -63,6 +63,7 @@ func _on_health_component_die() -> void:
 	reset_player()
 
 func reset_player():
+	print("player died")
 	health.current_health = health.starting_health
 	position = starting_pos
 
