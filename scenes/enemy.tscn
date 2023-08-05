@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqecp8vm56tma"]
+[gd_scene load_steps=10 format=3 uid="uid://dqecp8vm56tma"]
 
 [ext_resource type="Script" path="res://code/Enemy.gd" id="1_8vhs5"]
 [ext_resource type="PackedScene" uid="uid://bk6ikuoct1fpa" path="res://scenes/orc_mesh.tscn" id="2_j0goe"]
@@ -52,8 +52,6 @@ _data = {
 "run": SubResource("Animation_eleeo")
 }
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4f8cv"]
-
 [node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_8vhs5")
 
@@ -84,12 +82,9 @@ path_height_offset = 0.15
 avoidance_enabled = true
 max_neighbors = 3
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_4f8cv")
-anim_player = NodePath("../AnimationPlayer")
-
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="path_changed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_path_changed"]
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
