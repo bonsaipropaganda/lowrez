@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dk2wmmhukai50"]
+
+[ext_resource type="Script" path="res://code/proc_gen.gd" id="1_4w1in"]
+[ext_resource type="PackedScene" uid="uid://djpt27ldofduc" path="res://scenes/player.tscn" id="2_vlj3o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_isumu"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lpkgr"]
+sky_material = SubResource("ProceduralSkyMaterial_isumu")
+
+[sub_resource type="Environment" id="Environment_ao1gl"]
+background_mode = 2
+sky = SubResource("Sky_lpkgr")
+tonemap_mode = 2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_21bgo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6w35c"]
+size = Vector3(1000, 1, 1000)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_u5fbl"]
+size = Vector2(1000, 1000)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_4w1in")
+
+[node name="Origin" type="Node3D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_vlj3o")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 8, 0)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ao1gl")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_21bgo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_6w35c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("PlaneMesh_u5fbl")
+skeleton = NodePath("../../..")
+
+[connection signal="bake_finished" from="NavigationRegion3D" to="." method="_on_navigation_region_3d_bake_finished"]
