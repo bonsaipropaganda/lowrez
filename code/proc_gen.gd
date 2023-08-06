@@ -4,8 +4,17 @@ const MIN_SIZE = 10
 const MAX_SIZE = 20
 const REPEAT_CHILD = 5
 const MIN_INTER = 5
+const MIN_ROOMS = 5
+const MAX_ROOMS = 10
+
+enum {
+	START_ROOM,
+	ENEMY_ROOM,
+	HEALTH_ROOM
+}
 
 const Block = preload("res://scenes/block.tscn")
+const EnemyScene = preload("res://scenes/enemy.tscn")
 
 @onready
 var parent = $NavigationRegion3D
@@ -15,11 +24,10 @@ var player = $Player
 
 var rooms = []
 var doors = []
+var room_types = []
 
 func _ready():
-	init_map()
-	populate()
-	populate()
+	gen_map()
 	expand_plane()
 	make_mesh()
 	# rooms[-1] is the starting room
@@ -27,9 +35,47 @@ func _ready():
 
 	player.position = Vector3(start.x, 0, start.y)
 
+	room_types = []
+	room_types.resize(len(rooms))
+	room_types[-1] = START_ROOM
+	for i in len(rooms) - 1:
+		var r = rooms[i]
+		var rng = randf()
+		if rng < 0.2:
+			room_types[i] = HEALTH_ROOM
+		else:
+			room_types[i] = ENEMY_ROOM
+			var num_enemies = randi_range(1, 3)
+			for p in get_spawnpnts(r, num_enemies):
+				var enemy = EnemyScene.instantiate()
+				enemy.position = Vector3(p.x, 0.05, p.y)
+				add_child(enemy)
+
+
+
+func get_spawnpnts(room, n):
+	var ret = []
+	for i in n:
+		while true:
+			var p = Vector2(
+				randi_range(room.position.x + 2, room.end.x - 2),
+				randi_range(room.position.y + 2, room.end.y - 2),
+			)
+			if p not in ret:
+				ret.append(p)
+				break
+	return ret
 
 func _on_navigation_region_3d_bake_finished():
 	pass # Replace with function body.
+
+func gen_map():
+	while true:
+		init_map()
+		populate()
+		populate()
+		if len(rooms) >= MIN_ROOMS and len(rooms) <= MAX_ROOMS:
+			break
 
 func init_map():
 	rooms = []
