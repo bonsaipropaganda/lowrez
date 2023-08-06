@@ -34,6 +34,7 @@ func _ready():
 	var start = rooms[-1].position + rooms[-1].size/2
 
 	player.position = Vector3(start.x, 0, start.y)
+	player.starting_pos = player.position
 
 	room_types = []
 	room_types.resize(len(rooms))

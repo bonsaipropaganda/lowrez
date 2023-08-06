@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://djpt27ldofduc"]
+[gd_scene load_steps=7 format=3 uid="uid://djpt27ldofduc"]
 
 [ext_resource type="Script" path="res://code/Player.gd" id="1_0l28j"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="2_xcg1h"]
+[ext_resource type="Texture2D" uid="uid://4hnptyj0gk8p" path="res://art/heart.png" id="3_j71rn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jjqv4"]
 
@@ -37,4 +38,17 @@ shape = SubResource("BoxShape3D_t3l6c")
 [node name="HealthComponent" parent="." instance=ExtResource("2_xcg1h")]
 starting_health = 3
 
+[node name="Heart" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+texture = ExtResource("3_j71rn")
+
+[node name="Heart2" type="Sprite2D" parent="."]
+position = Vector2(12, 4)
+texture = ExtResource("3_j71rn")
+
+[node name="Heart3" type="Sprite2D" parent="."]
+position = Vector2(20, 4)
+texture = ExtResource("3_j71rn")
+
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
+[connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]

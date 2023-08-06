@@ -59,6 +59,9 @@ func _on_health_component_die() -> void:
 func reset_player():
 	print("player died")
 	health.current_health = health.starting_health
+	$Heart.show()
+	$Heart2.show()
+	$Heart3.show()
 	position = starting_pos
 
 func attack():
@@ -71,3 +74,13 @@ func attack():
 			if component.name == "HealthComponent":
 				print(component.current_health)
 				component.current_health -= 1
+
+
+func _on_health_component_take_damage():
+	if health.current_health < 3:
+		$Heart3.hide()
+	if health.current_health < 2:
+		$Heart2.hide()
+	if health.current_health < 1:
+		$Heart.hide()
+
