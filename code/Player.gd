@@ -17,6 +17,7 @@ var gravity: float = 9.8
 
 # variables
 var starting_pos
+var coin_count = 0
 
 func _ready() -> void:
 	starting_pos = position
@@ -63,7 +64,7 @@ func _on_health_component_die() -> void:
 	reset_player()
 
 func reset_player():
-	print("player died")
+	coin_count = 0
 	health.current_health = health.starting_health
 	$Heart.show()
 	$Heart2.show()

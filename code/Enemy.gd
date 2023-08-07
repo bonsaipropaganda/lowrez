@@ -20,6 +20,7 @@ var attack_range = 1.8
 @onready var player = $"../Player"
 @onready var orc_mesh = $"character-orc"
 
+
 func _physics_process(delta):
 	if global_position.distance_to(player.global_position) < follow_range:
 		should_follow = true
