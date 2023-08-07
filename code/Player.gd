@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Player
 
-const SPEED = 5.0
+var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = .03
 
@@ -17,6 +17,7 @@ var gravity: float = 9.8
 
 # variables
 var starting_pos
+var coin_count = 0
 
 func _ready() -> void:
 	starting_pos = position
@@ -35,6 +36,10 @@ func _physics_process(delta: float) -> void:
 	# Attack the thing in the Target Area!!
 	if Input.is_action_just_pressed("left_mb"):
 		attack()
+	
+	if Input.is_action_pressed("run"):
+		SPEED = 7
+	else: SPEED = 5
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -52,17 +57,20 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	push_rigid_body()
 
 func _on_health_component_die() -> void:
 	reset_player()
 
 func reset_player():
-	print("player died")
+	coin_count = 0
 	health.current_health = health.starting_health
 	$Heart.show()
 	$Heart2.show()
 	$Heart3.show()
 	position = starting_pos
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func attack():
 	# first get anything in the target area
@@ -72,7 +80,6 @@ func attack():
 	for body in bodies:
 		for component in body.get_children():
 			if component.name == "HealthComponent":
-				print(component.current_health)
 				component.current_health -= 1
 
 
@@ -84,3 +91,10 @@ func _on_health_component_take_damage():
 	if health.current_health < 1:
 		$Heart.hide()
 
+func push_rigid_body():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		for j in collision.get_collision_count():
+			var obj = collision.get_collider(j)
+			if obj is RigidBody3D:
+				obj.apply_central_impulse(position.direction_to(obj.position)/2)

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 1
+const SPEED = 2
 var gravity = 9.8
 
 # signals
@@ -19,6 +19,7 @@ var attack_range = 1.8
 @onready var nav_agent = $NavigationAgent3D
 @onready var player = $"../Player"
 @onready var orc_mesh = $"character-orc"
+
 
 func _physics_process(delta):
 	if global_position.distance_to(player.global_position) < follow_range:
