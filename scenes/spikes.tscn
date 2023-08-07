@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2mhdgkeg2ie"]
+
+[ext_resource type="PackedScene" uid="uid://ch2xtt0chsmt6" path="res://art/trap.glb" id="1_54to8"]
+[ext_resource type="Script" path="res://code/spikes.gd" id="1_frdrf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hen2w"]
+size = Vector3(0.642077, 0.236539, 0.634521)
+
+[node name="Spikes" type="Node3D"]
+script = ExtResource("1_frdrf")
+
+[node name="trap" parent="." instance=ExtResource("1_54to8")]
+
+[node name="Area3D" type="Area3D" parent="trap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00563824, 0.145907, -0.00389659)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trap/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0289565, 0)
+shape = SubResource("BoxShape3D_hen2w")
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="trap/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="trap/Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

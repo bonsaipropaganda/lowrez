@@ -63,6 +63,7 @@ func reset_player():
 	$Heart2.show()
 	$Heart3.show()
 	position = starting_pos
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func attack():
 	# first get anything in the target area
@@ -72,7 +73,6 @@ func attack():
 	for body in bodies:
 		for component in body.get_children():
 			if component.name == "HealthComponent":
-				print(component.current_health)
 				component.current_health -= 1
 
 

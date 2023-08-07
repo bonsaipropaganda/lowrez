@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 1
+const SPEED = 2
 var gravity = 9.8
 
 # signals
