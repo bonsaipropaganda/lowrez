@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bk6ikuoct1fpa"]
 
 [ext_resource type="PackedScene" uid="uid://c3rrobgj5yabx" path="res://art/character-orc.glb" id="1_kijgh"]
-[ext_resource type="Script" path="res://scenes/orc_mesh.gd" id="2_sfiif"]
+[ext_resource type="Script" path="res://code/orc_mesh.gd" id="2_bj6ru"]
 
 [sub_resource type="Animation" id="Animation_r4mkw"]
 length = 0.001
@@ -576,7 +576,7 @@ tracks/24/path = NodePath(".")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
-"times": PackedFloat32Array(0.6),
+"times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -840,7 +840,7 @@ states/run/position = Vector2(329.333, 101.556)
 transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_lml0i"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_4ws68"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_pbe48"), "attack", "attack 2", SubResource("AnimationNodeStateMachineTransition_4qj7h"), "attack 2", "attack", SubResource("AnimationNodeStateMachineTransition_wcvi0"), "attack 2", "run", SubResource("AnimationNodeStateMachineTransition_0yj5a")]
 
 [node name="character-orc" instance=ExtResource("1_kijgh")]
-script = ExtResource("2_sfiif")
+script = ExtResource("2_bj6ru")
 
 [node name="body" parent="character-orc2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.60956e-16, 0.17625, 0)
@@ -869,5 +869,5 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_dtq5t")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/conditions/attack = false
+parameters/conditions/attack = true
 parameters/conditions/run = false

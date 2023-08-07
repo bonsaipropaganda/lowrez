@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://t4aqevfirnxx"]
 
-[ext_resource type="Script" path="res://scenes/world.gd" id="1_4hy1n"]
+[ext_resource type="Script" path="res://code/world.gd" id="1_43u7l"]
 [ext_resource type="PackedScene" uid="uid://djpt27ldofduc" path="res://scenes/player.tscn" id="1_ehov7"]
 [ext_resource type="PackedScene" uid="uid://cnw5x6ktmfjdy" path="res://scenes/room.tscn" id="2_xbg5w"]
 [ext_resource type="PackedScene" uid="uid://bukq6r0bqnm47" path="res://scenes/block.tscn" id="3_bvxy2"]
@@ -24,7 +24,7 @@ sky = SubResource("Sky_lpkgr")
 tonemap_mode = 2
 
 [node name="World" type="Node3D"]
-script = ExtResource("1_4hy1n")
+script = ExtResource("1_43u7l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 8, 0)
@@ -37,11 +37,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35969, 0.000999928, -1.0163
 
 [node name="Enemy2" parent="." instance=ExtResource("4_sr1nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8611, 0.0510826, -0.588)
-visible = true
 
 [node name="Enemy1" parent="." instance=ExtResource("4_sr1nn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8611, 0.0510826, 1.47342)
-visible = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_he61j")

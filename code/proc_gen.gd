@@ -52,6 +52,10 @@ func _ready():
 				enemy.position = Vector3(p.x, 0.05, p.y)
 				add_child(enemy)
 
+func _process(delta):
+	# this makes the enemies follow the player
+	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
+
 
 
 func get_spawnpnts(room, n):
