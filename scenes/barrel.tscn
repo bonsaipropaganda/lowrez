@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyjcseop316cy"]
 
-[ext_resource type="Script" path="res://scenes/barrel.gd" id="1_c1tn4"]
+[ext_resource type="Script" path="res://code/barrel.gd" id="1_8vmp3"]
 [ext_resource type="PackedScene" uid="uid://c0q5jwju2ptye" path="res://art/barrel.glb" id="1_ejhel"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_g3rqe"]
 
@@ -9,7 +9,7 @@ height = 0.437041
 radius = 0.260371
 
 [node name="Barrel" type="RigidBody3D"]
-script = ExtResource("1_c1tn4")
+script = ExtResource("1_8vmp3")
 
 [node name="barrel" parent="." instance=ExtResource("1_ejhel")]
 
