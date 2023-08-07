@@ -15,6 +15,10 @@ enum {
 
 const Block = preload("res://scenes/block.tscn")
 const EnemyScene = preload("res://scenes/enemy.tscn")
+const SpikeScene = preload("res://scenes/spikes.tscn")
+const CoinScene = preload("res://scenes/coin.tscn")
+const BarrelScene = preload("res://scenes/barrel.tscn")
+
 
 @onready
 var parent = $NavigationRegion3D
@@ -24,7 +28,7 @@ var player = $Player
 
 var rooms = []
 var doors = []
-var room_types = []
+var spawn_list = []
 
 func _ready():
 	gen_map()
@@ -36,38 +40,45 @@ func _ready():
 	player.position = Vector3(start.x, 0, start.y)
 	player.starting_pos = player.position
 
-	room_types = []
-	room_types.resize(len(rooms))
-	room_types[-1] = START_ROOM
+	spawn_list.resize(len(rooms))
+	for i in len(rooms):
+		spawn_list[i] = []
+
 	for i in len(rooms) - 1:
 		var r = rooms[i]
-		var rng = randf()
-		if rng < 0.2:
-			room_types[i] = HEALTH_ROOM
-		else:
-			room_types[i] = ENEMY_ROOM
-			var num_enemies = randi_range(1, 3)
-			for p in get_spawnpnts(r, num_enemies):
-				var enemy = EnemyScene.instantiate()
-				enemy.position = Vector3(p.x, 0.05, p.y)
-				add_child(enemy)
+		for p in get_spawnpnts(i, randi_range(1, 3)):
+			var obj = EnemyScene.instantiate()
+			obj.position = Vector3(p.x, 0.05, p.y)
+			add_child(obj)
+		for p in get_spawnpnts(i, randi_range(1, 3)):
+			var obj = SpikeScene.instantiate()
+			obj.position = Vector3(p.x, 0.05, p.y)
+			add_child(obj)
+		for p in get_spawnpnts(i, randi_range(1, 3)):
+			var obj = CoinScene.instantiate()
+			obj.position = Vector3(p.x, 0.05, p.y)
+			add_child(obj)
+		for p in get_spawnpnts(i, randi_range(1, 3)):
+			var obj = BarrelScene.instantiate()
+			obj.position = Vector3(p.x, 0.05, p.y)
+			add_child(obj)
 
 func _process(delta):
 	# this makes the enemies follow the player
 	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
 
-
-
-func get_spawnpnts(room, n):
+func get_spawnpnts(i, n):
+	var room = rooms[i]
 	var ret = []
-	for i in n:
+	for j in n:
 		while true:
 			var p = Vector2(
 				randi_range(room.position.x + 2, room.end.x - 2),
 				randi_range(room.position.y + 2, room.end.y - 2),
 			)
-			if p not in ret:
+			if p not in spawn_list[i]:
 				ret.append(p)
+				spawn_list[i].append(p)
 				break
 	return ret
 
