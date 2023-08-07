@@ -59,8 +59,9 @@ func attack():
 	# checks if it has health component and
 	#if so subtracts health from that things current health
 	for body in bodies:
-		if body is Player:
-			body.health.current_health -= 1
+		for component in body.get_children():
+			if component.name == "HealthComponent":
+				component.current_health -= 1
 
 func update_target_location(target_location):
 	nav_agent.set_target_position(target_location)

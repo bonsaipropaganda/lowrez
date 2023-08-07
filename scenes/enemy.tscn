@@ -9,7 +9,7 @@ radius = 0.379515
 height = 0.75903
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nlixr"]
-size = Vector3(0.185241, 0.362026, 0.583954)
+size = Vector3(0.185241, 0.222367, 0.378691)
 
 [sub_resource type="Animation" id="Animation_rhr5b"]
 resource_name = "die"
@@ -62,10 +62,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382619, 0)
 shape = SubResource("CapsuleShape3D_bkcvw")
 
 [node name="TargetArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17127, -0.335697)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02485, -0.335697)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TargetArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129284, -0.676116, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129284, -0.676116, -0.348606)
 shape = SubResource("BoxShape3D_nlixr")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_posg8")]
