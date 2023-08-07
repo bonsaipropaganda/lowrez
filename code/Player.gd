@@ -14,13 +14,21 @@ var gravity: float = 9.8
 @onready var camera = $Head/Camera
 @onready var health = $HealthComponent
 @onready var target_area = $Head/TargetArea
+@onready var coin_label = $Label
 
 # variables
 var starting_pos
-var coin_count = 0
+var coin_count:
+	set(new_value):
+		if new_value > 999:
+			new_value = 999
+		coin_count = new_value
+		if coin_label:
+			coin_label.text = str(coin_count)
 
 func _ready() -> void:
 	starting_pos = position
+	coin_count = 0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -36,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	# Attack the thing in the Target Area!!
 	if Input.is_action_just_pressed("left_mb"):
 		attack()
-	
+
 	if Input.is_action_pressed("run"):
 		SPEED = 7
 	else: SPEED = 5
@@ -57,7 +65,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	
+
 	push_rigid_body()
 
 func _on_health_component_die() -> void:

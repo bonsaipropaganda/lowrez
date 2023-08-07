@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://djpt27ldofduc"]
+[gd_scene load_steps=10 format=3 uid="uid://djpt27ldofduc"]
 
 [ext_resource type="Script" path="res://code/Player.gd" id="1_0l28j"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="2_xcg1h"]
 [ext_resource type="Texture2D" uid="uid://4hnptyj0gk8p" path="res://art/heart.png" id="3_j71rn"]
+[ext_resource type="Texture2D" uid="uid://dojkk8qbrlibk" path="res://art/coin4.png" id="4_1tjij"]
+[ext_resource type="FontFile" uid="uid://c6pnohhyv7ewp" path="res://art/Kenney Mini Square Mono.ttf" id="5_7vnc0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jjqv4"]
 
@@ -11,6 +13,11 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t3l6c"]
 size = Vector3(0.529686, 1.50203, 0.853522)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2a66w"]
+font = ExtResource("5_7vnc0")
+font_size = 8
+font_color = Color(0.996078, 0.87451, 0.458824, 1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_0l28j")
@@ -49,6 +56,18 @@ texture = ExtResource("3_j71rn")
 [node name="Heart3" type="Sprite2D" parent="."]
 position = Vector2(20, 4)
 texture = ExtResource("3_j71rn")
+
+[node name="Coin4" type="Sprite2D" parent="."]
+position = Vector2(59, 5)
+texture = ExtResource("4_1tjij")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 15.0
+offset_right = 55.0
+offset_bottom = 13.0
+text = "999"
+label_settings = SubResource("LabelSettings_2a66w")
+horizontal_alignment = 2
 
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]
