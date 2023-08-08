@@ -23,3 +23,6 @@ func _on_resume_button_down():
 func _on_exit_button_down():
 	get_tree().quit()
 
+
+func _on_menu_button_down() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

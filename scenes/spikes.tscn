@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://code/spikes.gd" id="1_frdrf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hen2w"]
-size = Vector3(0.642077, 0.236539, 0.634521)
+size = Vector3(0.642077, 0.388631, 0.634521)
 
 [node name="Spikes" type="Node3D"]
 script = ExtResource("1_frdrf")

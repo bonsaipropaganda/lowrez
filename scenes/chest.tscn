@@ -1,14 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds3h5q8ww53nt"]
+[gd_scene load_steps=8 format=3 uid="uid://ds3h5q8ww53nt"]
 
+[ext_resource type="Script" path="res://code/chest.gd" id="1_2w8hp"]
 [ext_resource type="PackedScene" uid="uid://oyyrhj2fblhs" path="res://scenes/chest_mesh.tscn" id="1_4ng7l"]
+[ext_resource type="PackedScene" uid="uid://dwa1il6wely8c" path="res://scenes/coin.tscn" id="2_y4a8x"]
+[ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_dkvev"]
+[ext_resource type="PackedScene" uid="uid://cpu05u0h3yhp7" path="res://scenes/e_indicator.tscn" id="5_6qssj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vu481"]
 size = Vector3(0.505916, 0.452651, 0.482724)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_eph2u"]
+size = Vector3(0.585683, 1, 1)
+
 [node name="Chest" type="StaticBody3D"]
+script = ExtResource("1_2w8hp")
+coin_scene = ExtResource("2_y4a8x")
 
 [node name="chest_mesh" parent="." instance=ExtResource("1_4ng7l")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.229241, 0)
 shape = SubResource("BoxShape3D_vu481")
+
+[node name="PlayerDetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499443, -0.263687)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+shape = SubResource("BoxShape3D_eph2u")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_dkvev")]
+starting_health = 3
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+
+[node name="CoinSpawnPoint" type="Marker3D" parent="SpawnPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.574216, 0, 0)
+
+[node name="CoinSpawnPoint2" type="Marker3D" parent="SpawnPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0303426, 0, -0.464619)
+
+[node name="CoinSpawnPoint3" type="Marker3D" parent="SpawnPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.708084, 0, 0)
+
+[node name="EIndicator" parent="." instance=ExtResource("5_6qssj")]
+transform = Transform3D(0.0710753, 0, 0, 0, 0.0655214, 0, 0, 0, 0.30852, 0, 1, 0)
+visible = false
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
