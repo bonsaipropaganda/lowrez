@@ -20,6 +20,7 @@ const CoinScene = preload("res://scenes/coin.tscn")
 const BarrelScene = preload("res://scenes/barrel.tscn")
 const ChestScene = preload("res://scenes/chest.tscn")
 const RockScene = preload("res://scenes/rocks.tscn")
+const MageScene = preload("res://scenes/mage.tscn")
 
 
 @onready
@@ -71,6 +72,10 @@ func _ready():
 			add_child(obj)
 		for p in get_spawnpnts(i, randi_range(1, 3)):
 			var obj = RockScene.instantiate()
+			obj.position = Vector3(p.x, 0.05, p.y)
+			add_child(obj)
+		for p in get_spawnpnts(i, randi_range(0, 1)):
+			var obj = MageScene.instantiate()
 			obj.position = Vector3(p.x, 0.05, p.y)
 			add_child(obj)
 

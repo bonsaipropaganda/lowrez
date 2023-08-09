@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccp0g1dxpq6g1"]
+
+[ext_resource type="FontFile" uid="uid://c6pnohhyv7ewp" path="res://art/Kenney Mini Square Mono.ttf" id="1_aacjw"]
+[ext_resource type="Script" path="res://code/dialog_box.gd" id="1_myete"]
+
+[node name="DialogBox" type="Node2D"]
+script = ExtResource("1_myete")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 35.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 37.0
+offset_right = 63.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_aacjw")
+theme_override_font_sizes/font_size = 8
+text = "Heal for 10 coins?"
+autowrap_mode = 2
+metadata/_edit_group_ = true
+
+[node name="YesButton" type="Button" parent="."]
+offset_top = 17.0
+offset_right = 26.0
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("1_aacjw")
+theme_override_font_sizes/font_size = 8
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="."]
+offset_left = 38.0
+offset_top = 17.0
+offset_right = 64.0
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("1_aacjw")
+theme_override_font_sizes/font_size = 8
+text = "No
+"
+
+[connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="NoButton" to="." method="_on_no_button_pressed"]

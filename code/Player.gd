@@ -29,6 +29,7 @@ var coin_count:
 func _ready() -> void:
 	starting_pos = position
 	coin_count = 0
+	Global.heal_player.connect(heal_player)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -43,7 +44,9 @@ func _physics_process(delta: float) -> void:
 
 	# Attack the thing in the Target Area!!
 	if Input.is_action_just_pressed("left_mb"):
-		attack()
+		# only attack if the shop isn't open
+		if !Global.shop_open: 
+			attack()
 
 	if Input.is_action_pressed("run"):
 		SPEED = 7
@@ -110,3 +113,10 @@ func push_rigid_body():
 			var obj = collision.get_collider(j)
 			if obj is RigidBody3D:
 				obj.apply_central_impulse(position.direction_to(obj.position)/2)
+
+func heal_player():
+	if coin_count >= 10:
+		coin_count -= 10
+		health.current_health = 3
+		$Heart3.show()
+		$Heart2.show()

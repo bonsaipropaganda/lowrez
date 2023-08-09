@@ -1,0 +1,141 @@
+[gd_scene load_steps=18 format=3 uid="uid://bu71cu0nmt3bi"]
+
+[ext_resource type="PackedScene" uid="uid://bcf7ynf3vtb6a" path="res://art/Mage.glb" id="1_aymg1"]
+[ext_resource type="Script" path="res://code/mage_mesh.gd" id="2_olcf5"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tkp5s"]
+animation = &"Death_B"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oebj1"]
+animation = &"Hit_B"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jvr3d"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o0jfe"]
+animation = &"Interact"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gk0jp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tahl6"]
+advance_mode = 2
+advance_condition = &"interact"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_md0h5"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bpshb"]
+advance_mode = 2
+advance_condition = &"hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1x0sv"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i2hm6"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ia8k"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2lxgv"]
+advance_mode = 2
+advance_condition = &"hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tna85"]
+advance_mode = 2
+advance_condition = &"interact"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_geknr"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3wupt"]
+states/Death_B/node = SubResource("AnimationNodeAnimation_tkp5s")
+states/Death_B/position = Vector2(445.646, 28.6667)
+states/Hit_B/node = SubResource("AnimationNodeAnimation_oebj1")
+states/Hit_B/position = Vector2(560, 135.185)
+states/Idle/node = SubResource("AnimationNodeAnimation_jvr3d")
+states/Idle/position = Vector2(221.778, 138.401)
+states/Interact/node = SubResource("AnimationNodeAnimation_o0jfe")
+states/Interact/position = Vector2(445.383, 236.222)
+states/Start/position = Vector2(94.6667, 137.618)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_gk0jp"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_tahl6"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_md0h5"), "Idle", "Hit_B", SubResource("AnimationNodeStateMachineTransition_bpshb"), "Hit_B", "Idle", SubResource("AnimationNodeStateMachineTransition_1x0sv"), "Idle", "Death_B", SubResource("AnimationNodeStateMachineTransition_i2hm6"), "Hit_B", "Death_B", SubResource("AnimationNodeStateMachineTransition_3ia8k"), "Interact", "Hit_B", SubResource("AnimationNodeStateMachineTransition_2lxgv"), "Hit_B", "Interact", SubResource("AnimationNodeStateMachineTransition_tna85"), "Interact", "Death_B", SubResource("AnimationNodeStateMachineTransition_geknr")]
+
+[node name="Mage" instance=ExtResource("1_aymg1")]
+script = ExtResource("2_olcf5")
+
+[node name="Skeleton3D" parent="Rig" index="0"]
+bones/1/position = Vector3(0, 0.375171, 0)
+bones/1/rotation = Quaternion(-1.11123e-10, 0.0431578, 2.57241e-09, 0.999068)
+bones/4/rotation = Quaternion(-0.551202, -0.0612463, -0.653377, 0.51529)
+bones/5/rotation = Quaternion(3.14161e-08, -6.28537e-08, -0.484874, 0.874584)
+bones/7/rotation = Quaternion(-0.317353, -0.332233, 0.137194, 0.877545)
+bones/8/rotation = Quaternion(0.00160167, 0.00160167, -0.701202, 0.712959)
+bones/11/rotation = Quaternion(-0.610582, 0.0814803, 0.626814, 0.477131)
+bones/12/rotation = Quaternion(-5.3893e-10, 4.39318e-08, 0.508541, 0.861038)
+bones/14/rotation = Quaternion(-0.316114, 0.306764, -0.218994, 0.870638)
+bones/15/rotation = Quaternion(0.0044037, 0.00518691, 0.702511, 0.71164)
+bones/18/rotation = Quaternion(-5.80608e-11, -0.0313417, -1.88012e-09, 0.999509)
+bones/21/rotation = Quaternion(0.990887, 0.083322, 0.0777458, 0.0718046)
+bones/22/rotation = Quaternion(0.354723, 6.53572e-08, -2.53417e-07, 0.934972)
+bones/23/rotation = Quaternion(-0.600376, -0.203154, 0.0694735, 0.770358)
+bones/25/rotation = Quaternion(0.993035, -0.0324231, 0.0301909, 0.109175)
+bones/26/rotation = Quaternion(0.403298, -6.01147e-08, 2.81369e-07, 0.915069)
+bones/27/rotation = Quaternion(-0.628115, 0.113113, -0.0199532, 0.769596)
+bones/28/rotation = Quaternion(3.04791e-08, 0.920355, -0.391084, -6.94849e-08)
+bones/29/rotation = Quaternion(0.707107, -2.29302e-07, -4.60552e-08, 0.707107)
+bones/30/position = Vector3(0.202182, 0.0259903, 0.205181)
+bones/30/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/31/rotation = Quaternion(9.65792e-09, 1.77955e-09, 0.985719, -0.168398)
+bones/32/rotation = Quaternion(-1.04035e-07, 0.391084, 0.920355, -2.9526e-08)
+bones/34/rotation = Quaternion(1, -3.10863e-15, 1.94707e-07, -6.91739e-22)
+bones/36/rotation = Quaternion(0.707107, -3.82385e-08, 1.45009e-07, 0.707107)
+bones/37/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/38/rotation = Quaternion(-5.83589e-09, 6.43837e-10, 0.994809, 0.101756)
+bones/39/rotation = Quaternion(-1.04035e-07, 0.391084, 0.920355, -2.95261e-08)
+bones/44/position = Vector3(0.520841, 0.767794, -0.0576374)
+bones/44/rotation = Quaternion(0.794627, -1.11759e-07, 0.607098, -5.96046e-08)
+bones/46/position = Vector3(-0.510844, 0.767794, 0.0597369)
+bones/46/rotation = Quaternion(-0.758253, -1.52737e-07, 0.651961, -1.11759e-08)
+
+[node name="Spellbook" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(-4.65338e-05, 0.964838, 0.262844, -0.99985, 0.0045017, -0.0167007, -0.0172968, -0.262806, 0.964693, 0.57716, 0.610713, 0.236956)
+bone_idx = 9
+
+[node name="Spellbook" parent="Rig/Skeleton3D/Spellbook" index="0"]
+transform = Transform3D(-0.189784, 0.948515, 0.253576, -0.945749, -0.10724, -0.30669, -0.263707, -0.298024, 0.91741, 0.00217772, -0.000114173, 0.000183374)
+
+[node name="Spellbook_open" parent="Rig/Skeleton3D" index="1"]
+transform = Transform3D(-4.65338e-05, 0.964838, 0.262844, -0.99985, 0.0045017, -0.0167007, -0.0172968, -0.262806, 0.964693, 0.545526, 0.612723, 0.120854)
+visible = false
+bone_idx = 10
+
+[node name="1H_Wand" parent="Rig/Skeleton3D" index="2"]
+transform = Transform3D(-0.00311461, -0.163273, 0.986575, 0.999915, -0.0129132, 0.00101934, 0.0125737, 0.986496, 0.163299, -0.490745, 0.619335, 0.105747)
+bone_idx = 16
+
+[node name="2H_Staff" parent="Rig/Skeleton3D" index="3"]
+transform = Transform3D(-0.00311461, -0.163273, 0.986575, 0.999915, -0.0129132, 0.00101934, 0.0125737, 0.986496, 0.163299, -0.490745, 0.619335, 0.105747)
+bone_idx = 17
+
+[node name="Mage_Hat" parent="Rig/Skeleton3D" index="4"]
+transform = Transform3D(0.99972, -0.00612019, 0.0228409, 1.39341e-09, 0.965926, 0.258819, -0.0236466, -0.258747, 0.965656, -7.48419e-09, 1.75361, -1.02479e-07)
+bone_idx = 19
+
+[node name="Mage_Cape" parent="Rig/Skeleton3D" index="5"]
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.2997e-08, 1.18538, -1.01951e-07)
+bone_idx = 20
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_3wupt")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/death = false
+parameters/conditions/hit = false
+parameters/conditions/idle = false
+parameters/conditions/interact = false
