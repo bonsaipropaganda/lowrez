@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnm4357pc1sy3"]
+
+[ext_resource type="PackedScene" uid="uid://c0dh1d2wu6rtm" path="res://art/stones.glb" id="1_4jh38"]
+[ext_resource type="Script" path="res://code/rocks.gd" id="1_tkrph"]
+[ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_v8d4h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jsfu7"]
+size = Vector3(0.784035, 0.553937, 0.850988)
+
+[node name="Rocks" type="StaticBody3D"]
+script = ExtResource("1_tkrph")
+
+[node name="stones" parent="." instance=ExtResource("1_4jh38")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.144508, 0)
+shape = SubResource("BoxShape3D_jsfu7")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_v8d4h")]
+starting_health = 5
+
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]

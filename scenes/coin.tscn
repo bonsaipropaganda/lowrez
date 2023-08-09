@@ -14,7 +14,7 @@ script = ExtResource("1_bskuv")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.837094, 0)
 shape = SubResource("CylinderShape3D_olanc")
 
-[node name="coin" parent="." instance=ExtResource("2_gbpna")]
+[node name="coin_mesh" parent="." instance=ExtResource("2_gbpna")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.627166, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

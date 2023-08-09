@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bwpe2jh2o7ocy"]
 
-[ext_resource type="Script" path="res://scenes/dead_body.gd" id="1_f2ij2"]
+[ext_resource type="Script" path="res://code/dead_body.gd" id="1_f2ij2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cknqx"]
 resource_name = "brown"
