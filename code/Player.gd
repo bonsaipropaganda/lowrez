@@ -89,6 +89,10 @@ func attack():
 		for component in body.get_children():
 			if component.name == "HealthComponent":
 				component.current_health -= 1
+		if body is Enemy:
+			var v = body.position - position
+			if v:
+				body.velocity += 10 * v.normalized()
 
 
 func _on_health_component_take_damage():

@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+class_name Enemy
 
 const SPEED = 2
 var gravity = 9.8
