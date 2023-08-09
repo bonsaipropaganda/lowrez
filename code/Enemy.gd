@@ -79,7 +79,9 @@ func _on_navigation_agent_3d_target_reached() -> void:
 	attack_player.emit()
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
-	velocity = velocity.move_toward(safe_velocity, .25)
+	var v = velocity.move_toward(safe_velocity, .25)
+	velocity.x = v.x
+	velocity.z = v.z
 	if should_follow:
 		move_and_slide()
 
