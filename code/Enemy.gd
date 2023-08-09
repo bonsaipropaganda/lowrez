@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name Enemy
 
+const DeadBody = preload("res://scenes/dead_body.tscn")
+
 const SPEED = 2
 var gravity = 9.8
 
@@ -51,7 +53,10 @@ func _physics_process(delta):
 func _on_health_component_die() -> void:
 	animation_player.play("die")
 	# finishs animaiton before getting rid of the enemy
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.7).timeout
+	var body = DeadBody.instantiate()
+	body.transform = transform
+	get_parent().add_child(body)
 	queue_free()
 
 func attack():

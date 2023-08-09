@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2vmrarjuuoog"]
+
+[ext_resource type="Script" path="res://code/body_part.gd" id="1_du4t7"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_du4t7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

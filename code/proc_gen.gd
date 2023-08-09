@@ -40,7 +40,8 @@ func _ready():
 
 	player.position = Vector3(start.x, 0, start.y)
 	player.starting_pos = player.position
-
+	var d = doors[-1]
+	player.head.look_at(Vector3(d.x, 0, d.y))
 	spawn_list.resize(len(rooms))
 	for i in len(rooms):
 		spawn_list[i] = []
@@ -198,13 +199,14 @@ func expand_plane():
 		2*max(abs(pos.x), abs(end.x)) + 10,
 		2*max(abs(pos.y), abs(end.y)) + 10
 	)
-
-	$NavigationRegion3D/StaticBody3D/CollisionShape3D.shape.size = Vector3(
+	var size3 = Vector3(
 		size.x,
 		1,
 		size.y
 	)
+	$NavigationRegion3D/StaticBody3D/CollisionShape3D.shape.size = size3
 	$NavigationRegion3D/StaticBody3D/MeshInstance3D.mesh.size = size
+	$StaticBody3D/CollisionShape3D.shape.size = size3
 
 
 
