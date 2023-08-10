@@ -33,6 +33,8 @@ var rooms = []
 var doors = []
 var spawn_list = []
 
+var num_enemies = 0
+
 func _ready():
 	gen_map()
 	expand_plane()
@@ -54,6 +56,7 @@ func _ready():
 			var obj = EnemyScene.instantiate()
 			obj.position = Vector3(p.x, 0.05, p.y)
 			add_child(obj)
+			num_enemies += 1
 		for p in get_spawnpnts(i, randi_range(1, 3)):
 			var obj = SpikeScene.instantiate()
 			obj.position = Vector3(p.x, 0.05, p.y)
@@ -82,6 +85,11 @@ func _ready():
 func _process(delta):
 	# this makes the enemies follow the player
 	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
+
+func on_enemy_death():
+	num_enemies -= 1
+	if num_enemies <= 0:
+		get_tree().change_scene_to_file("res://scenes/victory_menu.tscn")
 
 func get_spawnpnts(i, n):
 	var room = rooms[i]
