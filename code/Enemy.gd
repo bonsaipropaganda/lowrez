@@ -52,6 +52,7 @@ func _physics_process(delta):
 
 func _on_health_component_die() -> void:
 	get_parent().on_enemy_death()
+	Global.orcs_killed += 1
 	animation_player.play("die")
 	# finishs animaiton before getting rid of the enemy
 	await get_tree().create_timer(0.7).timeout

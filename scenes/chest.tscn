@@ -10,7 +10,7 @@
 size = Vector3(0.505916, 0.452651, 0.482724)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eph2u"]
-size = Vector3(0.585683, 1, 1)
+size = Vector3(1.12774, 1, 1.39845)
 
 [node name="Chest" type="StaticBody3D"]
 script = ExtResource("1_2w8hp")
@@ -26,6 +26,7 @@ shape = SubResource("BoxShape3D_vu481")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499443, -0.263687)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.219292)
 shape = SubResource("BoxShape3D_eph2u")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_dkvev")]
