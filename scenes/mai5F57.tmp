@@ -22,7 +22,7 @@ grow_vertical = 2
 color = Color(0.301961, 0.301961, 0.301961, 1)
 script = ExtResource("1_7did0")
 
-[node name="NewGame" type="Button" parent="."]
+[node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_top = 12.0
 offset_right = 49.0
@@ -32,7 +32,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
 
-[node name="NewGameLabel" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 10.0
@@ -63,28 +63,7 @@ size_flags_horizontal = 4
 text = "i"
 label_settings = ExtResource("1_ejssc")
 
-[node name="SettingsButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 57.0
-offset_top = 8.0
-offset_right = 64.0
-offset_bottom = 15.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_txf4r")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
-
-[node name="SettingsLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 58.0
-offset_top = 6.0
-offset_right = 106.0
-offset_bottom = 16.0
-size_flags_horizontal = 4
-text = "S"
-label_settings = ExtResource("1_ejssc")
-
-[node name="ExitButton" type="Button" parent="."]
+[node name="Button2" type="Button" parent="."]
 layout_mode = 0
 offset_top = 23.0
 offset_right = 49.0
@@ -94,7 +73,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
 
-[node name="ExitLabel" type="Label" parent="."]
+[node name="Label2" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 21.0
@@ -115,7 +94,6 @@ text = "Orcs killed: "
 label_settings = ExtResource("1_ejssc")
 autowrap_mode = 2
 
-[connection signal="button_down" from="NewGame" to="." method="_on_new_game_button_down"]
+[connection signal="button_down" from="Button" to="." method="_on_new_game_button_down"]
 [connection signal="button_down" from="InformationButton" to="." method="_on_information_button_button_down"]
-[connection signal="button_down" from="SettingsButton" to="." method="_on_settings_button_button_down"]
-[connection signal="button_down" from="ExitButton" to="." method="_on_exit_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_exit_button_down"]
