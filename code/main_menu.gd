@@ -2,6 +2,7 @@ extends ColorRect
 
 const ProcGen = preload("res://scenes/proc_gen.tscn")
 
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

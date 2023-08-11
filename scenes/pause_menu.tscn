@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://pirxgisooq5v"]
+[gd_scene load_steps=9 format=3 uid="uid://pirxgisooq5v"]
 
 [ext_resource type="LabelSettings" uid="uid://oywuoybmb4xf" path="res://art/label_settings.tres" id="1_87eb0"]
 [ext_resource type="Script" path="res://code/pause_menu.gd" id="1_uym2a"]
+[ext_resource type="PackedScene" uid="uid://dyxwwto3tctt8" path="res://scenes/settings_menu.tscn" id="3_kkm3c"]
+[ext_resource type="PackedScene" uid="uid://cv256xtrad2de" path="res://scenes/information_menu.tscn" id="4_v08ap"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txf4r"]
 
@@ -23,8 +25,18 @@ grow_vertical = 2
 color = Color(0.301961, 0.301961, 0.301961, 1)
 script = ExtResource("1_uym2a")
 
-[node name="Button" type="Button" parent="."]
+[node name="SettingsMenu" parent="." instance=ExtResource("3_kkm3c")]
+visible = false
 layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PauseMenu" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="PauseMenu"]
 offset_top = 30.0
 offset_right = 49.0
 offset_bottom = 37.0
@@ -33,8 +45,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
+[node name="Label" type="Label" parent="PauseMenu"]
 offset_left = 1.0
 offset_top = 28.0
 offset_right = 49.0
@@ -43,46 +54,72 @@ size_flags_horizontal = 4
 text = "RESUME"
 label_settings = ExtResource("1_87eb0")
 
-[node name="Button2" type="Button" parent="."]
-layout_mode = 0
-offset_top = 41.0
+[node name="Button5" type="Button" parent="PauseMenu"]
+offset_top = 38.0
 offset_right = 49.0
-offset_bottom = 48.0
+offset_bottom = 45.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_txf4r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
+[node name="Label5" type="Label" parent="PauseMenu"]
 offset_left = 1.0
-offset_top = 39.0
+offset_top = 36.0
 offset_right = 49.0
-offset_bottom = 49.0
+offset_bottom = 46.0
 size_flags_horizontal = 4
-text = "EXIT"
+text = "Controls"
 label_settings = ExtResource("1_87eb0")
 
-[node name="Button3" type="Button" parent="."]
-layout_mode = 0
-offset_top = 19.0
+[node name="Button3" type="Button" parent="PauseMenu"]
+offset_top = 14.0
 offset_right = 49.0
-offset_bottom = 26.0
+offset_bottom = 21.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_txf4r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
 
-[node name="Label3" type="Label" parent="."]
-layout_mode = 0
+[node name="Label3" type="Label" parent="PauseMenu"]
 offset_left = 1.0
-offset_top = 17.0
+offset_top = 12.0
 offset_right = 49.0
-offset_bottom = 27.0
+offset_bottom = 22.0
 size_flags_horizontal = 4
 text = "MENU"
 label_settings = ExtResource("1_87eb0")
 
-[connection signal="button_down" from="Button" to="." method="_on_resume_button_down"]
-[connection signal="button_down" from="Button2" to="." method="_on_exit_button_down"]
-[connection signal="button_down" from="Button3" to="." method="_on_menu_button_down"]
+[node name="Button4" type="Button" parent="PauseMenu"]
+offset_top = 22.0
+offset_right = 49.0
+offset_bottom = 29.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_txf4r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
+
+[node name="Label4" type="Label" parent="PauseMenu"]
+offset_left = 1.0
+offset_top = 20.0
+offset_right = 49.0
+offset_bottom = 30.0
+size_flags_horizontal = 4
+text = "Sound"
+label_settings = ExtResource("1_87eb0")
+
+[node name="Information" parent="." instance=ExtResource("4_v08ap")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="show_pause_menu" from="SettingsMenu" to="." method="_on_settings_menu_show_pause_menu"]
+[connection signal="button_down" from="PauseMenu/Button" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="PauseMenu/Button5" to="." method="_on_controls_button_down"]
+[connection signal="button_down" from="PauseMenu/Button3" to="." method="_on_menu_button_down"]
+[connection signal="button_down" from="PauseMenu/Button4" to="." method="_on_sound_button_down"]
+[connection signal="show_menu" from="Information" to="." method="_on_information_show_menu"]

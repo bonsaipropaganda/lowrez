@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://code/Player.gd" id="1_0l28j"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="2_xcg1h"]
 [ext_resource type="Texture2D" uid="uid://4hnptyj0gk8p" path="res://art/heart.png" id="3_j71rn"]
-[ext_resource type="Texture2D" uid="uid://dojkk8qbrlibk" path="res://art/coin4.png" id="4_1tjij"]
+[ext_resource type="Texture2D" uid="uid://dkc0ymljrv7cx" path="res://art/crosshair.png" id="4_06b1s"]
 [ext_resource type="FontFile" uid="uid://c6pnohhyv7ewp" path="res://art/Kenney Mini Square Mono.ttf" id="5_7vnc0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jjqv4"]
@@ -57,9 +57,9 @@ texture = ExtResource("3_j71rn")
 position = Vector2(20, 4)
 texture = ExtResource("3_j71rn")
 
-[node name="Coin4" type="Sprite2D" parent="."]
-position = Vector2(59, 5)
-texture = ExtResource("4_1tjij")
+[node name="Crosshair" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("4_06b1s")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 15.0

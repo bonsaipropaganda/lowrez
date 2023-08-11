@@ -20,10 +20,26 @@ func _on_resume_button_down():
 	hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _on_exit_button_down():
-	get_tree().quit()
-
 
 func _on_menu_button_down() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_sound_button_down() -> void:
+	$PauseMenu.hide()
+	$SettingsMenu.show()
+
+
+func _on_settings_menu_show_pause_menu() -> void:
+	$PauseMenu.show()
+
+
+func _on_controls_button_down() -> void:
+	$PauseMenu.hide()
+	$Information.show()
+
+
+func _on_information_show_menu() -> void:
+	$Information.hide()
+	$PauseMenu.show()
