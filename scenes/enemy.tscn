@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_posg8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkcvw"]
-radius = 0.517109
-height = 1.40796
+radius = 0.379515
+height = 0.75903
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nlixr"]
 size = Vector3(0.185241, 0.222367, 0.378691)
@@ -56,17 +56,16 @@ _data = {
 script = ExtResource("1_8vhs5")
 
 [node name="character-orc" parent="." instance=ExtResource("2_j0goe")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679201, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382619, 0)
 shape = SubResource("CapsuleShape3D_bkcvw")
 
 [node name="TargetArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02485, -0.335697)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TargetArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129284, -0.47608, -0.568074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129284, -0.676116, -0.348606)
 shape = SubResource("BoxShape3D_nlixr")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_posg8")]
