@@ -13,7 +13,7 @@ var gravity: float = 9.8
 @onready var head = $Head
 @onready var camera = $Head/Camera
 @onready var health = $HealthComponent
-@onready var target_area = $Head/TargetArea
+@onready var target_area = $Head/Camera/TargetArea
 @onready var coin_label = $Label
 
 # variables
