@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://jp46oj3hxncf"]
+
+[ext_resource type="AudioStream" uid="uid://bqdavwhx7a35g" path="res://sound/music/menu.mp3" id="1_05506"]
+[ext_resource type="AudioStream" uid="uid://jxvw0dydk2au" path="res://sound/music/main song 1.mp3" id="2_b22b3"]
+[ext_resource type="AudioStream" uid="uid://c3nx325wt0om4" path="res://sound/music/main song 2.mp3" id="3_baidm"]
+
+[node name="MusicManager" type="Node2D"]
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_05506")
+
+[node name="MainTheme1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b22b3")
+
+[node name="MainTheme2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_baidm")

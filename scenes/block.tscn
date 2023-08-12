@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bukq6r0bqnm47"]
+[gd_scene load_steps=5 format=3 uid="uid://bukq6r0bqnm47"]
 
+[ext_resource type="Script" path="res://code/block.gd" id="1_d2fyg"]
 [ext_resource type="PackedScene" uid="uid://r7xpiuqqavph" path="res://art/wall.glb" id="1_jbwhx"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="2_ydi2s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5juk2"]
 
 [node name="Block" type="StaticBody3D"]
+script = ExtResource("1_d2fyg")
 
 [node name="wall" parent="." instance=ExtResource("1_jbwhx")]
 
@@ -14,3 +16,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.507296, 0)
 shape = SubResource("BoxShape3D_5juk2")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ydi2s")]
+starting_health = 10
+
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]

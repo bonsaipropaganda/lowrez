@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv256xtrad2de"]
+
+[ext_resource type="Script" path="res://code/information_menu.gd" id="1_qcop4"]
+[ext_resource type="LabelSettings" uid="uid://oywuoybmb4xf" path="res://art/label_settings.tres" id="2_wu7um"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txf4r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjma8"]
+bg_color = Color(0.180392, 0.294118, 0.490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3muii"]
+bg_color = Color(0.180392, 0.294118, 0.490196, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxyrl"]
+
+[node name="Information" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.301961, 0.301961, 1)
+script = ExtResource("1_qcop4")
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 49.0
+offset_bottom = 9.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_txf4r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
+
+[node name="MenuLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 49.0
+offset_bottom = 10.0
+size_flags_horizontal = 4
+text = "Back"
+label_settings = ExtResource("2_wu7um")
+
+[node name="ControlsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 28.0
+offset_right = 64.0
+offset_bottom = 64.0
+text = "Shift-run
+space-jump
+click-hit"
+label_settings = ExtResource("2_wu7um")
+autowrap_mode = 2
+
+[connection signal="button_down" from="MenuButton" to="." method="_on_menu_button_button_down"]

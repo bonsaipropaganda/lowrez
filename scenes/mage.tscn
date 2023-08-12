@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ojiglxxnkbvh"]
 
-[ext_resource type="Script" path="res://Mage.gd" id="1_bag4k"]
+[ext_resource type="Script" path="res://code/Mage.gd" id="1_aso2n"]
 [ext_resource type="PackedScene" uid="uid://bu71cu0nmt3bi" path="res://scenes/mage_mesh.tscn" id="2_1gdtd"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_ye6gl"]
 [ext_resource type="PackedScene" uid="uid://cpu05u0h3yhp7" path="res://scenes/e_indicator.tscn" id="4_iobbf"]
@@ -14,7 +14,7 @@ height = 2.17312
 size = Vector3(2.62874, 1, 2.82114)
 
 [node name="Mage" type="CharacterBody3D"]
-script = ExtResource("1_bag4k")
+script = ExtResource("1_aso2n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05456, 0)

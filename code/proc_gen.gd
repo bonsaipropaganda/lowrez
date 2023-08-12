@@ -89,7 +89,7 @@ func _process(delta):
 func on_enemy_death():
 	num_enemies -= 1
 	if num_enemies <= 0:
-		get_tree().change_scene_to_file("res://scenes/victory_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/menus/victory_menu.tscn")
 
 func get_spawnpnts(i, n):
 	var room = rooms[i]

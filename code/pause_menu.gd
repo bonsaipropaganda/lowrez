@@ -23,7 +23,7 @@ func _on_resume_button_down():
 
 func _on_menu_button_down() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
 
 func _on_sound_button_down() -> void:
