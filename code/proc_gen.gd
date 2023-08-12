@@ -36,6 +36,7 @@ var spawn_list = []
 var num_enemies = 0
 
 func _ready():
+	play_music()
 	gen_map()
 	expand_plane()
 	make_mesh()
@@ -227,7 +228,6 @@ func expand_plane():
 	$StaticBody3D/CollisionShape3D.shape.size = size3
 
 
-
 func make_mesh():
 	for r in rooms:
 		for x in range(r.position.x - 1, r.end.x + 1):
@@ -239,7 +239,6 @@ func make_mesh():
 	parent.bake_navigation_mesh(false)
 
 
-
 func place_block(pos):
 	for d in doors:
 		if d.x - 1 <= pos.x and d.y - 1 <= pos.y and d.x + 1 >= pos.x and d.y +1 >= pos.y:
@@ -249,4 +248,7 @@ func place_block(pos):
 		b.position = Vector3(pos.x, y, pos.y)
 		parent.add_child(b)
 
-
+func play_music():
+	await get_tree().create_timer(1).timeout
+	MusicManager.main_theme_1.play()
+#	MusicManager.fade("in",MusicManager.main_theme_1,-40)

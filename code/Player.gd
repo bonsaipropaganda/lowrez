@@ -81,7 +81,7 @@ func reset_player():
 	$Heart2.show()
 	$Heart3.show()
 	position = starting_pos
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
 func attack():
 	# first get anything in the target area

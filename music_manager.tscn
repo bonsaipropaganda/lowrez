@@ -16,3 +16,5 @@ stream = ExtResource("2_b22b3")
 
 [node name="MainTheme2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_baidm")
+
+[connection signal="finished" from="MainTheme1" to="." method="_on_main_theme_1_finished"]
