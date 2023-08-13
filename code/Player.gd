@@ -77,10 +77,8 @@ func _on_health_component_die() -> void:
 func reset_player():
 	coin_count = 0
 	health.current_health = health.starting_health
-	$Heart.show()
-	$Heart2.show()
-	$Heart3.show()
-	position = starting_pos
+	GlobalCanvasLayer.transition()
+	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
 func attack():

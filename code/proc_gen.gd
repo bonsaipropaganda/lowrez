@@ -36,6 +36,7 @@ var spawn_list = []
 var num_enemies = 0
 
 func _ready():
+	Global.orcs_killed = 0
 	gen_map()
 	expand_plane()
 	make_mesh()
