@@ -5,6 +5,9 @@ var audio_volume
 # value to change the audiostream player's volume by
 var fade_increment = 1
 
+var music_bus_on = true
+var sfx_bus_on = true
+
 signal fade_complete
 
 # node refs
