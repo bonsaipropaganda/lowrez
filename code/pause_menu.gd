@@ -1,6 +1,7 @@
 extends ColorRect
 
 func _input(event):
+	await get_tree().create_timer(1).timeout
 	if event.is_action_pressed("ui_cancel"):
 		if get_tree().paused:
 			get_tree().paused = false
