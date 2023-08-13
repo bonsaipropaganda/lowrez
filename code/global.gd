@@ -4,3 +4,5 @@ extends Node
 var shop_open = false
 
 signal heal_player
+
+var orcs_killed = 0

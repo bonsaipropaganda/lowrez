@@ -25,3 +25,8 @@ func fade(in_or_out: String,audiostreamplayer,start_value = null):
 				await get_tree().create_timer(.1).timeout
 				audiostreamplayer.volume_db -= fade_increment
 		else: push_error("Fade in type not selected. First argument, type, must be 'in' or 'out'.")
+
+
+
+func _on_main_theme_1_finished() -> void:
+	$MainTheme2.play()

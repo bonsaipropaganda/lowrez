@@ -51,6 +51,7 @@ func _physics_process(delta):
 		orc_mesh.attack = false
 
 func _on_health_component_die() -> void:
+	Global.orcs_killed += 1
 	get_parent().on_enemy_death()
 	animation_player.play("die")
 	# finishs animaiton before getting rid of the enemy
