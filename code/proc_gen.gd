@@ -90,6 +90,8 @@ func _process(delta):
 func on_enemy_death():
 	num_enemies -= 1
 	if num_enemies <= 0:
+		GlobalCanvasLayer.transition()
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scenes/menus/victory_menu.tscn")
 
 func get_spawnpnts(i, n):
