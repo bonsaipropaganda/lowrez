@@ -38,6 +38,7 @@ func _on_player_detection_area_body_exited(body: Node3D) -> void:
 
 
 func _on_health_component_die() -> void:
+	GlobalSfx.wood_broken.play()
 	queue_free()
 
 func spawn_coins():
@@ -45,3 +46,7 @@ func spawn_coins():
 		var coin = coin_scene.instantiate()
 		coin.position = spawner.position
 		add_child(coin)
+
+
+func _on_health_component_take_damage() -> void:
+	GlobalSfx.knife_wood.play()

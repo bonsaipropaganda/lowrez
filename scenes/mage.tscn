@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ojiglxxnkbvh"]
+[gd_scene load_steps=11 format=3 uid="uid://ojiglxxnkbvh"]
 
 [ext_resource type="Script" path="res://code/Mage.gd" id="1_aso2n"]
 [ext_resource type="PackedScene" uid="uid://bu71cu0nmt3bi" path="res://scenes/mage_mesh.tscn" id="2_1gdtd"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_ye6gl"]
 [ext_resource type="PackedScene" uid="uid://cpu05u0h3yhp7" path="res://scenes/e_indicator.tscn" id="4_iobbf"]
 [ext_resource type="PackedScene" uid="uid://ccp0g1dxpq6g1" path="res://scenes/dialog_box.tscn" id="5_bpcw8"]
+[ext_resource type="AudioStream" uid="uid://d1l3bp3618rd7" path="res://sound/sfx/ow_mage.mp3" id="6_5e07v"]
+[ext_resource type="AudioStream" uid="uid://cupb04kvnabvr" path="res://sound/sfx/mage_death.mp3" id="7_6qtgg"]
+[ext_resource type="AudioStream" uid="uid://deamvqly8pvrg" path="res://sound/sfx/body_falling.mp3" id="8_xc8mo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8bwo0"]
 radius = 0.610233
@@ -38,6 +41,15 @@ shape = SubResource("BoxShape3D_txwka")
 
 [node name="DialogBox" parent="." instance=ExtResource("5_bpcw8")]
 visible = false
+
+[node name="ow" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_5e07v")
+
+[node name="death" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_6qtgg")
+
+[node name="Thud" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_xc8mo")
 
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]

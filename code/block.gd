@@ -12,4 +12,9 @@ func _process(delta: float) -> void:
 
 
 func _on_health_component_die() -> void:
+	await get_tree().create_timer(.25).timeout
 	queue_free()
+
+
+func _on_health_component_take_damage() -> void:
+	GlobalSfx.clang.play()

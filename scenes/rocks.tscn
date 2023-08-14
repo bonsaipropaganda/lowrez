@@ -20,3 +20,4 @@ shape = SubResource("BoxShape3D_jsfu7")
 starting_health = 5
 
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
+[connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]

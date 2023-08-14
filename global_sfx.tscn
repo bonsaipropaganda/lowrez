@@ -1,0 +1,56 @@
+[gd_scene load_steps=12 format=3 uid="uid://ka5hjmbfb3xb"]
+
+[ext_resource type="Script" path="res://global_sfx.gd" id="1_0ace0"]
+[ext_resource type="AudioStream" uid="uid://duyj78p8m8nu4" path="res://sound/sfx/click.mp3" id="1_r1ufc"]
+[ext_resource type="AudioStream" uid="uid://dfvxnsbtnm317" path="res://sound/sfx/death.mp3" id="2_o0100"]
+[ext_resource type="AudioStream" uid="uid://dwn6tim1h3dhg" path="res://sound/sfx/footsteps.mp3" id="3_ys12e"]
+[ext_resource type="AudioStream" uid="uid://derd0kax01qou" path="res://sound/sfx/hit.mp3" id="4_wek28"]
+[ext_resource type="AudioStream" uid="uid://vvapm8exxdp4" path="res://sound/sfx/hurt.mp3" id="5_lbt4f"]
+[ext_resource type="AudioStream" uid="uid://b5prd1k8upseg" path="res://sound/sfx/crate_chest_destroyed.mp3" id="6_ttvbm"]
+[ext_resource type="AudioStream" uid="uid://b5nlftarb1xw7" path="res://sound/sfx/oh-yeah-96951.mp3" id="7_mb5c3"]
+[ext_resource type="AudioStream" uid="uid://cp8k06y8mt0ec" path="res://sound/sfx/knife_wood.mp3" id="7_qsu80"]
+[ext_resource type="AudioStream" uid="uid://fxr4jgcbqgo1" path="res://sound/sfx/success.mp3" id="10_dwtmh"]
+[ext_resource type="AudioStream" uid="uid://imheqtuo8xja" path="res://sound/sfx/clang.mp3" id="11_icn2d"]
+
+[node name="GlobalSFX" type="Node2D"]
+script = ExtResource("1_0ace0")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_r1ufc")
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_o0100")
+bus = &"SFX"
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ys12e")
+bus = &"SFX"
+
+[node name="Swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wek28")
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lbt4f")
+bus = &"SFX"
+
+[node name="knife_wood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qsu80")
+bus = &"SFX"
+
+[node name="wood_broken" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ttvbm")
+bus = &"SFX"
+
+[node name="oh_yeah" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_mb5c3")
+bus = &"SFX"
+
+[node name="coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_dwtmh")
+bus = &"SFX"
+
+[node name="Clang" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_icn2d")
+bus = &"SFX"

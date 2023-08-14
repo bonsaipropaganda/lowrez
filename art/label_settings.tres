@@ -6,3 +6,4 @@
 line_spacing = 0.0
 font = ExtResource("1_3fyqm")
 font_size = 8
+font_color = Color(0, 0, 0, 1)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://t4aqevfirnxx"]
+[gd_scene load_steps=14 format=3 uid="uid://t4aqevfirnxx"]
 
 [ext_resource type="Script" path="res://code/world.gd" id="1_tkdim"]
 [ext_resource type="PackedScene" uid="uid://djpt27ldofduc" path="res://scenes/player.tscn" id="2_64cju"]
-[ext_resource type="PackedScene" uid="uid://dqecp8vm56tma" path="res://scenes/enemy.tscn" id="4_vxogv"]
 [ext_resource type="PackedScene" uid="uid://cnw5x6ktmfjdy" path="res://scenes/room.tscn" id="5_mfngx"]
 [ext_resource type="PackedScene" uid="uid://cb2mhdgkeg2ie" path="res://scenes/spikes.tscn" id="5_ofbsb"]
 [ext_resource type="PackedScene" uid="uid://dyjcseop316cy" path="res://scenes/barrel.tscn" id="6_2b7r3"]
@@ -37,12 +36,6 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_64cju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.72985)
-
-[node name="Enemy2" parent="." instance=ExtResource("4_vxogv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23708, 0.0458593, -5.40635)
-
-[node name="Enemy1" parent="." instance=ExtResource("4_vxogv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97523, 0.0510826, 1.47342)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.30433)

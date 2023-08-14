@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://code/global.gd"
 MusicManager="*res://music_manager.tscn"
 GlobalCanvasLayer="*res://scenes/canvas_layer.tscn"
+GlobalSfx="*res://global_sfx.tscn"
 
 [display]
 

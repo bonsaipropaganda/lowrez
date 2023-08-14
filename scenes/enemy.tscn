@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqecp8vm56tma"]
+[gd_scene load_steps=12 format=3 uid="uid://dqecp8vm56tma"]
 
 [ext_resource type="Script" path="res://code/Enemy.gd" id="1_8vhs5"]
 [ext_resource type="PackedScene" uid="uid://bk6ikuoct1fpa" path="res://scenes/orc_mesh.tscn" id="2_j0goe"]
 [ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_posg8"]
+[ext_resource type="AudioStream" uid="uid://bdk24wcp0tkm3" path="res://sound/sfx/orc_knife.mp3" id="4_1bryl"]
+[ext_resource type="AudioStream" uid="uid://brj5g20wgqqvo" path="res://sound/sfx/orc_death_1.mp3" id="5_kjabi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkcvw"]
 radius = 0.475543
@@ -82,6 +84,12 @@ target_desired_distance = 2.0
 path_height_offset = 0.15
 avoidance_enabled = true
 max_neighbors = 3
+
+[node name="Hurt" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_1bryl")
+
+[node name="Death" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_kjabi")
 
 [connection signal="check_target_area" from="character-orc" to="." method="_on_characterorc_check_target_area"]
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]

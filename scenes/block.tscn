@@ -16,6 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.507296, 0)
 shape = SubResource("BoxShape3D_5juk2")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ydi2s")]
-starting_health = 10
+starting_health = 7
 
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
+[connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]

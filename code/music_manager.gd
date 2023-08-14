@@ -8,12 +8,18 @@ var fade_increment = 1
 var music_bus_on = true
 var sfx_bus_on = true
 
+var music_playing = false
+
 signal fade_complete
 
 # node refs
 @onready var menu_music = $Menu
 @onready var main_theme_1 = $MainTheme1
 @onready var main_theme_2 = $MainTheme2
+
+func _process(delta: float) -> void:
+	if $MainTheme1.is_playing() or $MainTheme2.is_playing():
+		music_playing = true
 
 # fades audiostreamplayers in or out
 func fade(in_or_out: String,audiostreamplayer,start_value = null):

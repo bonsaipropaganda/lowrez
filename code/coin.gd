@@ -13,5 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
+		GlobalSfx.coin.play()
 		body.coin_count += 1
 		self.queue_free()

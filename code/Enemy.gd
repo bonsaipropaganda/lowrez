@@ -51,6 +51,7 @@ func _physics_process(delta):
 		orc_mesh.attack = false
 
 func _on_health_component_die() -> void:
+	$Death.play()
 	Global.orcs_killed += 1
 	get_parent().on_enemy_death()
 	animation_player.play("die")
@@ -59,6 +60,7 @@ func _on_health_component_die() -> void:
 	var body = DeadBody.instantiate()
 	body.transform = transform
 	get_parent().add_child(body)
+	await get_tree().create_timer(1).timeout
 	queue_free()
 
 func attack():
@@ -75,6 +77,7 @@ func update_target_location(target_location):
 	nav_agent.set_target_position(target_location)
 
 func _on_health_component_take_damage() -> void:
+	$Hurt.play()
 	$AnimationPlayer.play("hit")
 
 func _on_navigation_agent_3d_target_reached() -> void:

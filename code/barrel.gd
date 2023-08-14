@@ -13,4 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_health_component_die() -> void:
+	GlobalSfx.wood_broken.play()
 	queue_free()
+
+
+func _on_health_component_take_damage() -> void:
+	GlobalSfx.knife_wood.play()

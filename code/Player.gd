@@ -72,6 +72,7 @@ func _physics_process(delta: float) -> void:
 	push_rigid_body()
 
 func _on_health_component_die() -> void:
+	GlobalSfx.death.play()
 	reset_player()
 
 func reset_player():
@@ -82,6 +83,7 @@ func reset_player():
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
 func attack():
+	GlobalSfx.swing.play()
 	# first get anything in the target area
 	var bodies = target_area.get_overlapping_bodies()
 	# checks if it has health component and
@@ -97,6 +99,8 @@ func attack():
 
 
 func _on_health_component_take_damage():
+	if health.current_health > -1:
+		GlobalSfx.hurt.play()
 	if health.current_health < 3:
 		$Heart3.hide()
 	if health.current_health < 2:
