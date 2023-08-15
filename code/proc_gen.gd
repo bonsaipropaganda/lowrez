@@ -21,6 +21,7 @@ const BarrelScene = preload("res://scenes/barrel.tscn")
 const ChestScene = preload("res://scenes/chest.tscn")
 const RockScene = preload("res://scenes/rocks.tscn")
 const MageScene = preload("res://scenes/mage.tscn")
+const TutorialScene = preload("res://scenes/tutorial_npc.tscn")
 
 
 @onready
@@ -51,37 +52,46 @@ func _ready():
 	for i in len(rooms):
 		spawn_list[i] = []
 
-	for i in len(rooms) - 1:
+	for i in len(rooms): #-1:
 		var r = rooms[i]
-		for p in get_spawnpnts(i, randi_range(1, 3)):
-			var obj = EnemyScene.instantiate()
-			obj.position = Vector3(p.x, 0.05, p.y)
-			add_child(obj)
-			num_enemies += 1
-		for p in get_spawnpnts(i, randi_range(1, 3)):
-			var obj = SpikeScene.instantiate()
-			obj.position = Vector3(p.x, 0.05, p.y)
-			add_child(obj)
-		for p in get_spawnpnts(i, randi_range(1, 3)):
-			var obj = CoinScene.instantiate()
-			obj.position = Vector3(p.x, 0.05, p.y)
-			add_child(obj)
-		for p in get_spawnpnts(i, randi_range(1, 3)):
-			var obj = BarrelScene.instantiate()
-			obj.position = Vector3(p.x, 0.05, p.y)
-			add_child(obj)
-		for p in get_spawnpnts(i, randi_range(0, 1)):
-			var obj = ChestScene.instantiate()
-			obj.position = Vector3(p.x, 0.05, p.y)
-			add_child(obj)
-		for p in get_spawnpnts(i, randi_range(1, 3)):
-			var obj = RockScene.instantiate()
-			obj.position = Vector3(p.x, 0.05, p.y)
-			add_child(obj)
-		for p in get_spawnpnts(i, randi_range(0, 1)):
-			var obj = MageScene.instantiate()
-			obj.position = Vector3(p.x, 0.05, p.y)
-			add_child(obj)
+		
+		# if it's the starting room
+		if r == rooms[-1]:
+			for p in get_spawnpnts(i, randi_range(1, 1)):
+				var obj = TutorialScene.instantiate()
+				obj.position = Vector3(p.x, 0.05, p.y)
+				add_child(obj)
+		else:
+			for p in get_spawnpnts(i, randi_range(1, 3)):
+				var obj = EnemyScene.instantiate()
+				obj.position = Vector3(p.x, 0.05, p.y)
+				add_child(obj)
+				num_enemies += 1
+			for p in get_spawnpnts(i, randi_range(1, 3)):
+				var obj = SpikeScene.instantiate()
+				obj.position = Vector3(p.x, 0.05, p.y)
+				add_child(obj)
+			for p in get_spawnpnts(i, randi_range(0, 1)):
+				var obj = CoinScene.instantiate()
+				obj.position = Vector3(p.x, 0.05, p.y)
+				add_child(obj)
+			for p in get_spawnpnts(i, randi_range(1, 3)):
+				var obj = BarrelScene.instantiate()
+				obj.position = Vector3(p.x, 0.05, p.y)
+				obj.add_coin.connect(spawn_coin)
+				add_child(obj)
+			for p in get_spawnpnts(i, randi_range(0, 1)):
+				var obj = ChestScene.instantiate()
+				obj.position = Vector3(p.x, 0.05, p.y)
+				add_child(obj)
+			for p in get_spawnpnts(i, randi_range(1, 3)):
+				var obj = RockScene.instantiate()
+				obj.position = Vector3(p.x, 0.05, p.y)
+				add_child(obj)
+			for p in get_spawnpnts(i, randi_range(0, 1)):
+				var obj = MageScene.instantiate()
+				obj.position = Vector3(p.x, 0.05, p.y)
+				add_child(obj)
 
 func _process(delta):
 	# this makes the enemies follow the player
@@ -253,3 +263,7 @@ func place_block(pos):
 		parent.add_child(b)
 
 
+func spawn_coin(pos):
+	var coin_inst = CoinScene.instantiate()
+	coin_inst.global_position = pos
+	add_child(coin_inst)

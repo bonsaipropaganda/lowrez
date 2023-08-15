@@ -4,7 +4,7 @@ signal show_pause_menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$MouseSpeed.text = str(Global.SENSITIVITY)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,3 +42,13 @@ func _on_sfx_button_down() -> void:
 		MusicManager.sfx_bus_on = true
 		AudioServer.set_bus_mute(2,false)
 		$Label3.text = "SFX on"
+
+
+func _on_plus_button_down() -> void:
+	Global.SENSITIVITY += .005
+	$MouseSpeed.text = str(Global.SENSITIVITY)
+
+
+func _on_minus_button_down() -> void:
+	Global.SENSITIVITY -= .005
+	$MouseSpeed.text = str(Global.SENSITIVITY)

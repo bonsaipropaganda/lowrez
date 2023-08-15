@@ -4,7 +4,7 @@ class_name Player
 
 var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-const SENSITIVITY = .03
+#var SENSITIVITY = .03
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = 9.8
@@ -33,8 +33,8 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		head.rotate_y(-event.relative.x * Global.SENSITIVITY)
+		camera.rotate_x(-event.relative.y * Global.SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(40))
 
 func _physics_process(delta: float) -> void:

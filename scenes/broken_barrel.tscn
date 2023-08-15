@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://lkejcl2lymr8"]
+
+[ext_resource type="Script" path="res://scenes/broken_barrel.gd" id="1_hn67l"]
+[ext_resource type="PackedScene" uid="uid://cp3qb07p3cij7" path="res://barrel_mesh_real.tscn" id="2_gk3ko"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_hn67l")
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="barrel" parent="Meshes" instance=ExtResource("2_gk3ko")]
+
+[node name="Slicer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292914, 0)

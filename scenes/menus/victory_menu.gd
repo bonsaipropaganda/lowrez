@@ -8,9 +8,6 @@ func _ready():
 	GlobalCanvasLayer.fade_in()
 	if $OrcsKilled:
 		$OrcsKilled.text += str(Global.orcs_killed)
-	# play music if one of the two music songs is not playing
-	if !MusicManager.main_theme_1.is_playing() or !MusicManager.main_theme_2.is_playing():
-		MusicManager.main_theme_1.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_new_game_button_down():

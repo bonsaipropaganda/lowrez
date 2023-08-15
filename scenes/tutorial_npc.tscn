@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://cic0nmaoe7np2"]
+
+[ext_resource type="Script" path="res://scenes/tutorial_npc.gd" id="1_bfwbr"]
+[ext_resource type="PackedScene" uid="uid://dyhk34bvr5waa" path="res://scenes/health_component.tscn" id="3_h78y5"]
+[ext_resource type="PackedScene" uid="uid://cpu05u0h3yhp7" path="res://scenes/e_indicator.tscn" id="4_1bc1x"]
+[ext_resource type="PackedScene" uid="uid://dx65ksnv7bdks" path="res://scenes/tutorial_dialog.tscn" id="4_xsyb8"]
+[ext_resource type="AudioStream" uid="uid://d1l3bp3618rd7" path="res://sound/sfx/ow_mage.mp3" id="6_qr10m"]
+[ext_resource type="AudioStream" uid="uid://cupb04kvnabvr" path="res://sound/sfx/mage_death.mp3" id="7_lrw2s"]
+[ext_resource type="PackedScene" uid="uid://5xty44xqng3m" path="res://scenes/knight_mesh.tscn" id="7_m2q4e"]
+[ext_resource type="AudioStream" uid="uid://deamvqly8pvrg" path="res://sound/sfx/body_falling.mp3" id="8_j1s6t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8bwo0"]
+radius = 0.610233
+height = 2.17312
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txwka"]
+size = Vector3(2.62874, 1, 2.82114)
+
+[node name="TutorialNPC" type="CharacterBody3D"]
+script = ExtResource("1_bfwbr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05456, 0)
+shape = SubResource("CapsuleShape3D_8bwo0")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_h78y5")]
+starting_health = 3
+
+[node name="EIndicator" parent="." instance=ExtResource("4_1bc1x")]
+transform = Transform3D(0.0710753, 0, 0, 0, 0.0655214, 0, 0, 0, 0.30852, 0, 1.50556, 0.60627)
+visible = false
+
+[node name="PlayerDetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.607483, 0)
+shape = SubResource("BoxShape3D_txwka")
+
+[node name="DialogBox" parent="." instance=ExtResource("4_xsyb8")]
+visible = false
+
+[node name="ow" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_qr10m")
+
+[node name="death" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_lrw2s")
+
+[node name="Thud" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_j1s6t")
+
+[node name="KnightMesh" parent="." instance=ExtResource("7_m2q4e")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
+[connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="close_shop" from="DialogBox" to="." method="_on_dialog_box_close_shop"]

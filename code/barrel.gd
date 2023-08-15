@@ -1,5 +1,8 @@
 extends RigidBody3D
 
+@export var coin_scene: PackedScene
+
+signal add_coin(position)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +16,7 @@ func _process(delta: float) -> void:
 
 
 func _on_health_component_die() -> void:
+	add_coin.emit($SpawnPoint.global_position)
 	GlobalSfx.wood_broken.play()
 	queue_free()
 
