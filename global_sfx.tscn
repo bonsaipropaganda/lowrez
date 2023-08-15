@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://imheqtuo8xja" path="res://sound/sfx/clang.mp3" id="11_icn2d"]
 
 [node name="GlobalSFX" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_0ace0")
 
 [node name="Click" type="AudioStreamPlayer" parent="."]

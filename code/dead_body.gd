@@ -12,10 +12,10 @@ func _ready():
 	for mesh_inst in $Meshes.get_children():
 		slicer.rotate_y(2*PI*randf())
 		var t = Transform3D.IDENTITY
-		t.origin = mesh_inst.to_local((slicer.global_transform.origin))
-		t.basis.x = mesh_inst.to_local((slicer.global_transform.basis.x))
-		t.basis.y = mesh_inst.to_local((slicer.global_transform.basis.y))
-		t.basis.z = mesh_inst.to_local((slicer.global_transform.basis.z))
+		t.origin = mesh_inst.to_local(slicer.global_transform.origin)
+		t.basis.x = mesh_inst.to_local(slicer.global_transform.basis.x + mesh_inst.global_position)
+		t.basis.y = mesh_inst.to_local(slicer.global_transform.basis.y + mesh_inst.global_position)
+		t.basis.z = mesh_inst.to_local(slicer.global_transform.basis.z + mesh_inst.global_position)
 		var meshes = mesh_slicer.slice_mesh(t, mesh_inst.mesh, material)
 		for mesh in meshes:
 			if len(meshes[0].get_faces()) <= 2:
