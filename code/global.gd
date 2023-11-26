@@ -8,4 +8,4 @@ signal heal_player
 var orcs_killed = 0
 
 # used for mouse sensitivity
-var SENSITIVITY = .03
+var SENSITIVITY = .005

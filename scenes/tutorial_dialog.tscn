@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://c6pnohhyv7ewp" path="res://art/Kenney Mini Square Mono.ttf" id="3_gg888"]
 
 [node name="DialogBox" type="Node2D"]
+scale = Vector2(10, 10)
 script = ExtResource("1_wytka")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

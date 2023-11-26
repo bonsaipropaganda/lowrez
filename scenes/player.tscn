@@ -46,25 +46,30 @@ shape = SubResource("BoxShape3D_t3l6c")
 starting_health = 3
 
 [node name="Heart" type="Sprite2D" parent="."]
-position = Vector2(4, 4)
+position = Vector2(40, 38)
+scale = Vector2(10, 10)
 texture = ExtResource("3_j71rn")
 
 [node name="Heart2" type="Sprite2D" parent="."]
-position = Vector2(12, 4)
+position = Vector2(113, 38)
+scale = Vector2(10, 10)
 texture = ExtResource("3_j71rn")
 
 [node name="Heart3" type="Sprite2D" parent="."]
-position = Vector2(20, 4)
+position = Vector2(186, 38)
+scale = Vector2(10, 10)
 texture = ExtResource("3_j71rn")
 
 [node name="Crosshair" type="Sprite2D" parent="."]
-position = Vector2(32, 32)
+position = Vector2(320, 320)
+scale = Vector2(4, 4)
 texture = ExtResource("4_06b1s")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 15.0
-offset_right = 55.0
+offset_left = 240.0
+offset_right = 280.0
 offset_bottom = 13.0
+scale = Vector2(10, 10)
 text = "999"
 label_settings = SubResource("LabelSettings_2a66w")
 horizontal_alignment = 2

@@ -24,14 +24,17 @@ color = Color(0.301961, 0.301961, 0.301961, 1)
 script = ExtResource("1_7did0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(32, 32)
+position = Vector2(320, 321)
+scale = Vector2(10, 10)
 texture = ExtResource("2_uok5v")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_top = 40.0
+offset_top = 58.0
 offset_right = 49.0
-offset_bottom = 47.0
+offset_bottom = 65.0
+scale = Vector2(10, 10)
+theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxEmpty_txf4r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
@@ -43,15 +46,18 @@ offset_left = 1.0
 offset_top = 38.0
 offset_right = 49.0
 offset_bottom = 48.0
+scale = Vector2(10, 10)
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
 text = "NEW GAME"
 label_settings = ExtResource("1_ejssc")
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_top = 56.0
+offset_top = 489.0
 offset_right = 49.0
-offset_bottom = 63.0
+offset_bottom = 496.0
+scale = Vector2(10, 10)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_txf4r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pjma8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3muii")
@@ -60,9 +66,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_rxyrl")
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 54.0
+offset_top = 468.0
 offset_right = 49.0
-offset_bottom = 64.0
+offset_bottom = 478.0
+scale = Vector2(10, 10)
 size_flags_horizontal = 4
 text = "EXIT"
 label_settings = ExtResource("1_ejssc")
@@ -70,9 +77,10 @@ label_settings = ExtResource("1_ejssc")
 [node name="OrcsKilled" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 22.0
+offset_top = 141.0
 offset_right = 62.0
-offset_bottom = 42.0
+offset_bottom = 161.0
+scale = Vector2(10, 10)
 size_flags_horizontal = 4
 text = "Ded orcs:"
 label_settings = ExtResource("1_ejssc")

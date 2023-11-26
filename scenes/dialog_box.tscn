@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c10pxnvv1idy5" path="res://art/menu_background.png" id="2_q7la3"]
 
 [node name="DialogBox" type="Node2D"]
+scale = Vector2(10, 10)
 script = ExtResource("1_myete")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -131,6 +131,8 @@ _data = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer"]
+scale = Vector2(10, 10)
+transform = Transform2D(10, 0, 0, 10, 0, 0)
 script = ExtResource("1_xm254")
 
 [node name="ColorRect" type="ColorRect" parent="."]

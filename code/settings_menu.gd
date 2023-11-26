@@ -45,10 +45,10 @@ func _on_sfx_button_down() -> void:
 
 
 func _on_plus_button_down() -> void:
-	Global.SENSITIVITY += .005
+	Global.SENSITIVITY += .001
 	$MouseSpeed.text = str(Global.SENSITIVITY)
 
 
 func _on_minus_button_down() -> void:
-	Global.SENSITIVITY -= .005
+	Global.SENSITIVITY -= .001
 	$MouseSpeed.text = str(Global.SENSITIVITY)
